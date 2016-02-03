@@ -4,7 +4,6 @@ action :create do
 	local_file = "#{node[:raven_deploy][:attachments_dir]}/#{new_resource.name}"
 	remote_file = new_resource.name
 	install_script = new_resource.install_script
-	bucket = new_resource.bucket || node[:raven_deploy][:attachments_bucket]
 
 	directory new_resource.directory do
 		recursive true
@@ -18,7 +17,7 @@ action :create do
 			aws_secret_access_key node[:raven_deploy][:aws_secret]
 		end
 		remote_path remote_file
-		bucket bucket
+		bucket new_resource.bucket || node[:raven_deploy][:attachments_bucket]
 		notifies :run, "bash[extract-#{new_resource.name}]", :immediately
 	end
 
