@@ -16,8 +16,11 @@ action :checkout do
 	if repository.nil? then
 		
 		# we're on vagrant, so run deploy callbacks
-		release_path = app_path
-		eval(::File.read("#{app_path}/deploy/before_symlink.rb"))
+		callback_path = "#{app_path}/deploy/before_symlink.rb"
+		if ::File.exists?(callback_path) then
+			release_path = app_path
+			eval(::File.read(callback_path))
+		end
 
 	else
 
