@@ -1,4 +1,4 @@
-use_inline_resources 
+use_inline_resources if defined?(use_inline_resources)
 
 action :create do
 	local_file = "#{node[:raven_deploy][:attachments_dir]}/#{new_resource.name}"
