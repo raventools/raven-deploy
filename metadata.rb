@@ -9,8 +9,6 @@ version          '0.1.1'
 depends "s3_file"
 depends "apache2"
 
-recipe "raven-deploy::default"
-recipe "raven-deploy::install_aws_credentials"
-recipe "raven-deploy::install_keys"
-recipe "raven-deploy::opsworks_php"
-recipe "raven-deploy::run_deploy_hooks"
+recipe "raven-deploy::default", "set up deployment dependencies"
+recipe "raven-deploy::install_aws_credentials", "install aws key pairs in ~/.aws/credentials"
+recipe "raven-deploy::install_keys", "install application deploy keys"
