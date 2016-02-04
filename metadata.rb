@@ -8,6 +8,7 @@ version          '0.1.1'
 
 depends "s3_file"
 depends "apache2"
+depends "raven-dev"
 
 recipe "raven-deploy::default", "set up deployment dependencies"
 recipe "raven-deploy::install_aws_credentials", "install aws key pairs in ~/.aws/credentials"
