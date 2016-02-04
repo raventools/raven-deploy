@@ -26,9 +26,7 @@ action :create do
 		cwd new_resource.directory
 		code <<-EOH
 		tar -xf #{local_file} --no-same-owner
-		md5sum `tar tf #{local_file}` > .md5sum
 		EOH
-#		not_if "cd #{new_resource.directory} && md5sum -c #{new_resource.directory}/.md5sum"
 		notifies :run, "bash[install-#{new_resource.name}]", :immediately
 	end
 
