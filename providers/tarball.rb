@@ -29,16 +29,6 @@ action :create do
 		EOH
 		notifies :run, "bash[install-#{new_resource.name}]", :immediately
 	end
-
-	install_script_path = "#{new_resource.directory}/#{install_script}"
-	bash "install-#{new_resource.name}" do
-		action :nothing
-		cwd new_resource.directory
-		code <<-EOH
-		#{install_script_path}
-		EOH
-		only_if { ::File.exists?(install_script_path) }
-	end
 end
 
 action :delete do
