@@ -27,7 +27,6 @@ action :create do
 		code <<-EOH
 		tar -xf #{local_file} --no-same-owner
 		EOH
-		notifies :run, "bash[install-#{new_resource.name}]", :immediately
 	end
 end
 
