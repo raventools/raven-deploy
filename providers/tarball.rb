@@ -9,7 +9,7 @@ action :create do
 		recursive true
 	end
 
-	s3_file local_file do
+	aws_s3_file local_file do
 		if node.attribute?("raven_deploy") and node[:raven_deploy].attribute?("aws_key") then
 			aws_access_key_id node[:raven_deploy][:aws_key]
 		end
