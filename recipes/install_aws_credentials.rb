@@ -6,6 +6,11 @@ directory "/root/.aws"
 	"/hudson" => "jenkins"
 }.each do |homedir,username|
 
+	directory "#{homedir}/.aws" do
+		owner username
+		only_if { ::File.exists?(homedir) }
+	end
+
 	file "#{homedir}/.aws/credentials" do
 		content <<-EOH
 [default]
