@@ -15,3 +15,21 @@ recipe "raven-deploy::default", "set up deployment dependencies"
 recipe "raven-deploy::install_aws_credentials", "install aws key pairs in ~/.aws/credentials"
 recipe "raven-deploy::install_keys", "install application deploy keys"
 recipe "raven-deploy::install_raven_repo", "install raven yum repo on images that don't have it by default"
+
+attribute "raven_deploy",
+    :display_name => "Raven Deploy",
+    :type => "hash"
+
+attribute "raven_deploy/aws_key",
+    :display_name => "AWS Access Key ID",
+    :description => "AWS Access Key ID",
+    :required => "recommended",
+    :type => "string",
+    :recipes => ["site_auditor_grid::install_aws_credentials"]
+
+attribute "raven_deploy/aws_secret",
+    :display_name => "AWS Secret Key",
+    :description => "AWS Secret Key",
+    :required => "recommended",
+    :type => "string",
+    :recipes => ["site_auditor_grid::install_aws_credentials"]
