@@ -25,11 +25,11 @@ attribute "raven_deploy/aws_key",
     :description => "AWS Access Key ID",
     :required => "recommended",
     :type => "string",
-    :recipes => ["site_auditor_grid::install_aws_credentials"]
+    :recipes => ["raven-deploy::install_aws_credentials"]
 
 attribute "raven_deploy/aws_secret",
     :display_name => "AWS Secret Key",
     :description => "AWS Secret Key",
     :required => "recommended",
     :type => "string",
-    :recipes => ["site_auditor_grid::install_aws_credentials"]
+    :recipes => ["raven-deploy::install_aws_credentials"]
