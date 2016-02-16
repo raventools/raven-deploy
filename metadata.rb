@@ -9,6 +9,7 @@ version          '0.1.1'
 depends "aws"
 depends "apache2"
 depends "raven-dev"
+depends "raven-php"
 depends "yum"
 
 recipe "raven-deploy::default", "set up deployment dependencies"

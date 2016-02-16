@@ -22,7 +22,8 @@ action :create do
 	end
 
 	bash "extract-#{new_resource.name}" do
-		action :nothing
+		not_if "for i in `tar tf #{local_file}`; do ls $i; done"
+		action :run
 		cwd new_resource.directory
 		code <<-EOH
 		tar -xf #{local_file} --no-same-owner

@@ -1,3 +1,5 @@
+include_recipe "raven-deploy"
+
 directory "/root/.aws"
 
 {

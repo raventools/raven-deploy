@@ -48,6 +48,12 @@ action :checkout do
 
 	unless docroot.nil? then
 
+		# this shouldn't be necessary since apache2::default is being included,
+		# but it doesn't work without it
+		service "apache2" do
+			service_name "httpd"
+		end
+
 		# if docroot is a relative path, append it to app_path
 		if docroot[0] != "/" then
 			docroot = "#{app_path}/current/#{docroot}"
