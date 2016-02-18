@@ -13,6 +13,10 @@ action :checkout do
 	domains = new_resource.domains
 	port = new_resource.port
 
+	directory app_path do
+		recursive true
+	end
+
 	if repository.nil? then
 		
 		# we're on vagrant, so run deploy callbacks
