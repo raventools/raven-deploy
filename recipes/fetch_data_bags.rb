@@ -1,6 +1,4 @@
-chef_gem "aws-sdk" do
-	compile_time true
-end
+chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
 
