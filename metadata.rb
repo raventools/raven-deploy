@@ -17,6 +17,7 @@ recipe "raven-deploy::default", "set up deployment dependencies"
 recipe "raven-deploy::install_aws_credentials", "install aws key pairs in ~/.aws/credentials"
 recipe "raven-deploy::install_keys", "install application deploy keys"
 recipe "raven-deploy::install_raven_repo", "install raven yum repo on images that don't have it by default"
+recipe "raven-deploy::fetch_data_bags", "fetches chef data bags from s3"
 
 attribute "raven_deploy",
     :display_name => "Raven Deploy",
