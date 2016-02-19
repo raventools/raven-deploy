@@ -4,9 +4,7 @@ require 'aws-sdk'
 
 begin
 	# try w/o creds first, assuming instance role on ec2
-	s3 = ::Aws::S3::Client.new(
-		:region => "us-east-1"
-	)
+	s3 = ::Aws::S3::Client.new
 rescue
 	# fall back to using provided creds (vagrant)
 	s3 = ::Aws::S3::Client.new(
