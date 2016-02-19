@@ -49,3 +49,5 @@ s3.list_objects(
 		response_target: target_path
 	)
 end
+
+::Aws.config[:ssl_ca_bundle] = nil
