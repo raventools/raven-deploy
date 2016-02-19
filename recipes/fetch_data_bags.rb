@@ -2,6 +2,9 @@ chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
 
+# https://github.com/aws/aws-sdk-core-ruby/issues/166
+::Aws.use_bundled_cert!
+
 begin
 	puts "attempting to load from instance role\n";
 	# try w/o creds first, assuming instance role on ec2
