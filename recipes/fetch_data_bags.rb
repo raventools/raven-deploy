@@ -8,7 +8,7 @@ require 'aws-sdk'
 begin
 	puts "attempting to load from instance role\n";
 	# try w/o creds first, assuming instance role on ec2
-	s3 = ::Aws::S3::Client.new
+	s3 = ::Aws::S3::Client.new(region:"us-east-1")
 rescue
 	puts "loading from instance role failed. use inputs\n";
 	# fall back to using provided creds (vagrant)
