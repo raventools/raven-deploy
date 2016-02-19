@@ -3,9 +3,11 @@ chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 require 'aws-sdk'
 
 begin
+	puts "attempting to load from instance role\n";
 	# try w/o creds first, assuming instance role on ec2
 	s3 = ::Aws::S3::Client.new
 rescue
+	puts "loading from instance role failed. use inputs\n";
 	# fall back to using provided creds (vagrant)
 	s3 = ::Aws::S3::Client.new(
 		:region => "us-east-1",
