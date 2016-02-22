@@ -52,4 +52,9 @@ s3.list_objects(
 	)
 end
 
-::Aws.config[:ssl_ca_bundle] = nil
+# vagrant overrides the default data bag location. set it back
+Chef::Config[:data_bag_path] = ["/var/chef/data_bags"]
+
+# this is the default location, but for some reason it doesn't work unless it's set here
+Chef::Config[:encrypted_data_bag_secret] = "/etc/chef/encrypted_data_bag_secret"
+
