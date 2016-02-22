@@ -8,6 +8,7 @@ version          '0.1.2'
 
 depends "build-essential"
 depends "aws"
+depends "s3_file"
 depends "apache2"
 depends "raven-dev"
 depends "raven-php"

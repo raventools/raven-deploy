@@ -4,7 +4,7 @@ action :create do
 	local_file = "#{node[:raven_deploy][:attachments_dir]}/#{new_resource.name}"
 	remote_file = new_resource.name
 
-	aws_s3_file local_file do
+	s3_file local_file do
 		if node.attribute?("raven_deploy") and node[:raven_deploy].attribute?("aws_key") then
 			aws_access_key_id node[:raven_deploy][:aws_key]
 		end
