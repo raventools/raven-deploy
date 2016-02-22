@@ -1,6 +1,8 @@
 chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
+require 'fileutils'
+FileUtils.mkdir_p "/etc/chef"
 
 # https://github.com/aws/aws-sdk-core-ruby/issues/166
 ::Aws.use_bundled_cert!
