@@ -37,3 +37,12 @@ attribute "raven_deploy/aws_secret",
     :required => "recommended",
     :type => "string",
     :recipes => ["raven-deploy::install_aws_credentials"]
+
+attribute "raven_deploy/cache_dir",
+    :display_name => "Cache Directory",
+    :description => "Directory to store downloaded files",
+    :required => "recommended",
+    :type => "string",
+    :recipes => ["raven-deploy::default"],
+	:default => "/var/chef/cache"
+
