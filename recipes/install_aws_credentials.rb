@@ -1,7 +1,8 @@
 {
 	"/root" => "root",
 	"/var/lib/jenkins" => "jenkins",
-	"/hudson" => "jenkins"
+	"/hudson" => "jenkins",
+	"/var/www" => "apache"
 }.each do |homedir,username|
 
 	directory("#{homedir}/.aws") {
