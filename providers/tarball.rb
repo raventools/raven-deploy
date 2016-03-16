@@ -1,7 +1,8 @@
 use_inline_resources if defined?(use_inline_resources)
 
 action :create do
-	local_file = "#{node[:raven_deploy][:attachments_dir]}/#{new_resource.name}"
+	file_name = ::File.basename(new_resource.name)
+	local_file = "#{node[:raven_deploy][:attachments_dir]}/#{file_name}"
 	remote_file = new_resource.name
 	install_script = new_resource.install_script
 
@@ -26,7 +27,7 @@ action :create do
 		action :run
 		cwd new_resource.directory
 		code <<-EOH
-		tar -xf #{local_file} --no-same-owner
+		tar -xf #{local_file} --no-same-owner --unlink-first --recursive-unlink
 		EOH
 	end
 end
