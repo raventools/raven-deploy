@@ -12,3 +12,5 @@ default[:raven_deploy][:cache_dir] = "/vagrant/cache"
 
 default[:raven_deploy][:httpd_user] = "www-data"
 default[:raven_deploy][:httpd_group] = "www-data"
+
+default[:raven_deploy][:deploy_base_path] = "/home/webapps"
