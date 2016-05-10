@@ -1,7 +1,7 @@
 
 newrelic_install_rpm = "newrelic-repo-5-3.noarch.rpm"
 newrelic_install_url = "http://yum.newrelic.com/pub/newrelic/el5/x86_64/#{newrelic_install_rpm}"
-rpm_path = "#{default[:raven_deploy][:attachments_dir]}/#{newrelic_install_rpm}"
+rpm_path = "#{node[:raven_deploy][:attachments_dir]}/#{newrelic_install_rpm}"
 
 # download installer
 remote_file rpm_path do
