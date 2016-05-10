@@ -19,6 +19,7 @@ recipe "raven-deploy::install_aws_credentials", "install aws key pairs in ~/.aws
 recipe "raven-deploy::install_keys", "install application deploy keys"
 recipe "raven-deploy::install_raven_repo", "install raven yum repo on images that don't have it by default"
 recipe "raven-deploy::fetch_data_bags", "fetches chef data bags from s3"
+recipe "raven-deploy::install_newrelic", "Installes newrelic agent"
 
 attribute "raven_deploy",
     :display_name => "Raven Deploy",
@@ -43,6 +44,21 @@ attribute "raven_deploy/cache_dir",
     :description => "Directory to store downloaded files",
     :required => "recommended",
     :type => "string",
-    :recipes => ["raven-deploy::default"],
+    :recipes => ["raven-deploy::default","raven-deploy::install_newrelic"],
 	:default => "/var/chef/cache"
 
+
+attribute "raven_deploy/newrelic/key",
+    :display_name => "Newrelic Key",
+    :description => "Key used for newrelic agent",
+    :required => "required",
+    :type => "string",
+    :recipes => ["raven-deploy::install_newrelic"]
+
+
+attribute "raven_deploy/newrelic/appname",
+    :display_name => "Newrelic Appname",
+    :description => "App name this server will show up as in newrelic",
+    :required => "required",
+    :type => "string",
+    :recipes => ["raven-deploy::install_newrelic"]
