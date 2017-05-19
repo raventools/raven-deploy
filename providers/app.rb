@@ -29,7 +29,13 @@ action :checkout do
 	else
 
 		# we got a repo, so let's deploy it
-		key_path = "/root/.ssh/#{name}-deploy.key"
+		key_path = "/tmp/deploy_#{name}"
+		file key_path do
+			sensitive true
+			mode 0600
+			content data_bag_item('deploy_keys',name)["private_key"]
+		end
+
 		wrapper_path = "/tmp/#{name}-deploy.sh"
 		file wrapper_path do
 			content "/usr/bin/env ssh -o 'StrictHostKeyChecking=no' -i '#{key_path}' $1 $2"
@@ -48,6 +54,11 @@ action :checkout do
 			create_dirs_before_symlink	([])
 		end
 	
+		[key_path,wrapper_path].each do |p|
+			file p do
+				action :delete
+			end
+		end
 	end
 
 	unless docroot.nil? then
