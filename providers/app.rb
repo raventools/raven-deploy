@@ -29,13 +29,14 @@ action :checkout do
 	else
 
 		# we got a repo, so let's deploy it
+		private_key = Chef::EncryptedDataBagItem.load('deploy_keys', name)["private_key"]
 		key_path = "/tmp/deploy_#{name}"
 		file key_path do
 			if defined?(sensitive) then
 				sensitive true
 			end
 			mode 0600
-			content data_bag_item('deploy_keys',name)["private_key"]
+			content private_key
 		end
 
 		wrapper_path = "/tmp/#{name}-deploy.sh"
