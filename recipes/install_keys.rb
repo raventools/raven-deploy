@@ -1,4 +1,3 @@
-
 myusers = { "root" => "/root" }
 
 if system("getent passwd jenkins")
@@ -7,7 +6,7 @@ end
 
 myusers.each do |username, sshdir|
 
-	raven_deploy_tarball "code-deploy-keys.tar" do
+	raven_deploy_tarball "deploy-keys.tar" do
 		bucket node[:raven_deploy][:keys_bucket]
 		directory "#{sshdir}/.ssh"
 	end

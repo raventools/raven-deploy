@@ -7,7 +7,7 @@ action :create do
 	lockfile = "#{directory}/npm-shrinkwrap.json"
 
 	if ! ::File.exists?(lockfile) then
-		raise "could not find npm.lock in #{release_path}"
+		raise "could not find npm.lock in #{directory}"
 	end
 
 	checksum = Digest::MD5.file(lockfile).hexdigest
