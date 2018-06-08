@@ -18,7 +18,7 @@ action :checkout do
 	end
 
 	if repository.nil? then
-		
+
 		# we're on vagrant, so run deploy callbacks
 		callback_path = "#{app_path}/deploy/before_symlink.rb"
 		if ::File.exists?(callback_path) then
@@ -56,7 +56,7 @@ action :checkout do
 			purge_before_symlink		([])
 			create_dirs_before_symlink	([])
 		end
-	
+
 		[key_path,wrapper_path].each do |p|
 			file p do
 				action :delete
@@ -76,7 +76,7 @@ action :checkout do
 		if docroot[0] != "/" then
 			docroot = "#{app_path}/current/#{docroot}"
 		end
-		
+
 		web_app name do
 			docroot docroot
 			server_name domains.first
@@ -90,6 +90,9 @@ action :checkout do
 			identifier "php5_module"
 			conf true
 			filename "libphp5.so"
+		end
+		if node['platform_version'].to_f > 7.0
+			apache_module 'access_compat'
 		end
 
 	end
