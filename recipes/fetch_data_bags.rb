@@ -1,3 +1,4 @@
+chef_gem("aws-sdk-sso") { action :nothing }.run_action(:install)
 chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
