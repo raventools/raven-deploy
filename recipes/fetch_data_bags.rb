@@ -1,7 +1,7 @@
-chef_gem "aws-sdk-sso" do
-	action :nothing 
-	source 'https://rubygems.org/'
-end.run_action(:install)
+# chef_gem "aws-sdk-sso" do
+# 	action :nothing 
+# 	source 'https://rubygems.org/'
+# end.run_action(:install)
 chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
