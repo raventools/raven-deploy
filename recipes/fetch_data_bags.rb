@@ -1,8 +1,16 @@
-# chef_gem "aws-sdk-sso" do
-# 	action :nothing 
-# 	source 'https://rubygems.org/'
-# end.run_action(:install)
-chef_gem("aws-sdk") { action :nothing }.run_action(:install)
+package "https://packages.chef.io/stable/el/6/chefdk-1.0.3-1.el6.x86_64.rpm"
+
+chef_gem "aws-sdk-sso" do
+	action :nothing 
+	source 'https://rubygems.org/'
+	gem_binary '/opt/chefdk/embedded/bin/gem'
+end.run_action(:install)
+chef_gem "aws-sdk" do
+	action :nothing 
+	source 'https://rubygems.org/'
+	gem_binary '/opt/chefdk/embedded/bin/gem'
+end.run_action(:install)
+# chef_gem("aws-sdk") { action :nothing }.run_action(:install)
 
 require 'aws-sdk'
 require 'fileutils'
