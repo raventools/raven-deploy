@@ -6,6 +6,10 @@ if IS_VAGRANT == '1'
 		source 'https://rubygems.org/'
 	end.run_action(:install)
 	chef_gem("aws-sdk") { action :nothing }.run_action(:install)
+	chef_gem 'aws-eventstream' do
+		source 'https://rubygems.org/'
+		version '1.1.1'
+	end
 
 	require 'aws-sdk'
 	require 'fileutils'
