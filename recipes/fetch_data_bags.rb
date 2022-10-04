@@ -1,6 +1,6 @@
 IS_VAGRANT = `grep -q '^vagrant:' /etc/passwd >/dev/null&& echo '1'`
 
-if IS_VAGRANT == '1'
+if IS_VAGRANT == '2'
 	chef_gem "aws-sdk-sso" do
 		action :nothing 
 		source 'https://rubygems.org/'
